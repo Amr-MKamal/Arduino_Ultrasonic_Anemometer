@@ -34,6 +34,12 @@ _tempmiss=0;
   soilM= analogRead(soil_analog);
   soilM = map(soilM,1000,0,0,1000);
   //Build JSON Package 
+build_json_package();
+WindX.avgwind=0;  //optional reset this averge if you want each cycle averge to be unique 
+delay(90000);
+}
+void build_json_package(void) {
+Serial.print(" {");
 Serial.print("{ \"Temp\":");Serial.print("\"");Serial.println(CycTemp);Serial.print("\"");Serial.print(" , ");
 Serial.print("\"Humidity\":");Serial.print("\"");Serial.println(CycHum);Serial.print("\"");Serial.print(" , ");
 Serial.print("\"Soil_Mositure\":");Serial.print("\"");Serial.println(soilM);Serial.print("\"");Serial.print(" , ");
@@ -49,11 +55,9 @@ Serial.print("\"Minmimum_Speed_z\" :");Serial.print("\"");Serial.print(WindZ.min
 Serial.print("\"Wind_frequency_x\": ");Serial.print("\"");Serial.print(WindX.gust);Serial.print("\"");Serial.print(" , ");
 Serial.print("\"Wind_frequency_y\" :");Serial.print("\"");Serial.print(WindY.gust);Serial.print("\"");Serial.print(" , ");
 Serial.print("\"Wind_frequency_z \":");Serial.print("\"");Serial.print(WindZ.gust);Serial.print("\"");Serial.print(" , ");
-Serial.print("\"Cycle Overshoot\":");Serial.print("\"");Serial.print(allmiss);Serial.print("\"");Serial.print(" }");
-WindX.avgwind=0;  //optional reset this averge if you want each cycle averge to be unique 
-delay(90000);
+Serial.print("\"Cycle Overshoot\":");Serial.print("\"");Serial.print(allmiss);Serial.print("\"");
+Serial.println(" }");
 }
-
 void Set_nowinddistance(){
     Ux1.nowind_distance=nowind_distancex1;
     Ux2.nowind_distance=nowind_distancex2;
