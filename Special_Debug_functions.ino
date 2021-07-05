@@ -27,34 +27,27 @@ void setup() {
 }
 
 void loop() {
-   //if(dht.working)
-   //doesn't update before 2 seconds
-
-//   delay(10);
-//  ultradis=Uz1.get_selfecho();
-//  winspeed=Uz1.transform_read(ultradis);
-//  //Uz2.disable();
-//  Serial.print("ultrasonic z1 is ");Serial.println(ultradis);
-// Serial.print("ultrasonic z1 windspeed  "); Serial.println(winspeed);
-//  ultradis=Uz2.get_selfecho();
-//  winspeed=Uz2.transform_read(ultradis);
-//  Serial.print("ultrasonic z2 is ");Serial.println(ultradis);
-//  //Uz1.disable();
-//  Serial.print("averge is");Serial.println(winspeed);
-//      delay(1000);
-// winspeed=WindZ.get_avergewind();
-// Serial.print("averge wind is ");Serial.println(winspeed);
- wind_cycle(&WindX ,&WindY, &WindZ);
+  //increamental Unit tests 
+   if(dht.working) //doesn't update before 2 seconds
+   delay(10);
+ ultradis=Uz1.get_selfecho();
+ winspeed=Uz1.transform_read(ultradis);
+ Serial.print("ultrasonic z1 is ");Serial.println(ultradis);
+ Serial.print("ultrasonic z1 windspeed  "); Serial.println(winspeed);
+ ultradis=Uz2.get_selfecho();
+ winspeed=Uz2.transform_read(ultradis);
+ Serial.print("ultrasonic z2 is ");Serial.println(ultradis);
+ Serial.print("averge is");Serial.println(winspeed);
+ delay(1000);
+winspeed=WindZ.get_avergewind();
+Serial.print("averge wind is ");Serial.println(winspeed);
+wind_cycle(&WindX ,&WindY, &WindZ);
 allmiss=(WindX._selfmiss+WindY._selfmiss+WindZ._selfmiss)*selfecho_timeout;
 allmiss+=(WindX._aheadmiss+WindY._aheadmiss+WindZ._aheadmiss)*headecho_timeout;
-//allmiss+= _tempmiss;
-////write debugging tools
-////// if global windZ=global_windY=global_windX; it's static wind
-////// repeat the loop and measure difference between readings
-//
-////_tempmiss=0;
-//
-
+allmiss+= _tempmiss;
+//// if global windZ=global_windY=global_windX; it's static wind
+//// repeat the loop and measure difference between readings
+_tempmiss=0;
   soilM= analogRead(soil_analog);
   soilM = map(soilM,1000,0,0,1000);
   //Build JSON Package 
@@ -77,7 +70,6 @@ Serial.print("\"Cycle Overshoot\":");Serial.print("\"");Serial.print(allmiss);Se
 WindX.avgwind=0;  //optional reset this averge if you want each cycle averge to be unique 
 delay(90000);
 }
-
 void Set_nowinddistance(){
     Ux1.nowind_distance=nowind_distancex1;
     Ux2.nowind_distance=nowind_distancex2;
@@ -87,28 +79,35 @@ void Set_nowinddistance(){
     Uz2.nowind_distance=nowind_distancez2;
 }
 void Test_allsensors(void){
-  //Serial.print("sensors status are");
+  Serial.print("sensors status are");
+  //// add soil sensor tests 
   renew_temp_hu(dht,&CycTemp,&CycHum); //doesn't update before 2 seconds
   if(isnan(CycTemp)){
-    //Serial.print("AM2301 is not working , please recheck connection /n");
+    Serial.print("AM2301 is not working , please recheck connection /n");
     dht.working=0;}
-  else {dht.working=true; 
-  //Serial.print("Temp:");Serial.print(CycTemp);Serial.println(" C");
-  }
+  else {
+    dht.working=true; 
+    Serial.print("Temp:");Serial.print(CycTemp);Serial.println(" C");
+    }
   ultradis=Ux1.get_selfecho();delay(50);
   ultradis+=Ux1.get_selfecho();delay(50);
   ultradis=Ux1.get_selfecho();
   Ux1.disable();
-  if(ultradis){Ux1.working=true;
-  //Serial.print("ultrasonic x1 is working with min_dis= ");Serial.println(ultradis);
-  }
-  else {Ux1.working=false;
-  //Serial.print("ultrasonic x1 is not working and has been ignored");
-  }
-  ultradis=0;ultradis=Ux2.get_selfecho();delay(50);
-  ultradis+=Ux2.get_selfecho();delay(50);
-  ultradis+=Ux2.get_selfecho();ultradis=ultradis/3;Ux2.disable();
-  if(ultradis){Ux2.working=true;
+  if(!isnan(ultradis)){
+    Ux1.working=true;
+    Serial.print("ultrasonic x1 is working with min_dis= ");Serial.println(ultradis);
+    }
+  else {
+    Ux1.working=false;
+    Serial.print("ultrasonic x1 is not working and has been ignored");
+    }
+  ultradis=0; ultradis=Ux2.get_selfecho(); 
+  delay(50);
+  ultradis+=Ux2.get_selfecho(); 
+  delay(50);
+  ultradis+=Ux2.get_selfecho(); ultradis=ultradis/3;
+  Ux2.disable();
+  if(!isnan(ultradis)){Ux2.working=true;
   //Serial.print("ultrasonic x2 is working with min_dis= ");Serial.println(ultradis);
   }
   else {Ux2.working=false;
@@ -117,7 +116,7 @@ void Test_allsensors(void){
    ultradis=0; ultradis=Uy1.get_selfecho();delay(50);
   ultradis+=Uy1.get_selfecho();delay(50);
   ultradis+=Uy1.get_selfecho();ultradis=ultradis/3;Uy1.disable();
-  if(ultradis){Uy1.working=true;
+  if(!isnan(ultradis)){Uy1.working=true;
   //Serial.print("ultrasonic y1 is working with min_dis= ");Serial.println(ultradis);
   }
   else {Uy1.working=false;
@@ -127,7 +126,7 @@ void Test_allsensors(void){
   ultradis=Uy2.get_selfecho();delay(50);
   ultradis+=Uy2.get_selfecho();delay(50);
   ultradis+=Uy2.get_selfecho();ultradis=ultradis/3;Uy2.disable();
-  if(ultradis){Uy2.working=true;
+  if(!isnan(ultradis)){Uy2.working=true;
   //Serial.print("ultrasonic y2 is working with min_dis= ");Serial.println(ultradis);
   }
   else {Uy2.working=false;
@@ -136,7 +135,7 @@ void Test_allsensors(void){
    ultradis=0; ultradis=Uz1.get_selfecho();delay(50);
   ultradis+=Uz1.get_selfecho();delay(50);
   ultradis+=Uz1.get_selfecho();ultradis=ultradis/3;Uz1.disable();
-  if(ultradis){Uz1.working=true;
+  if(!isnan(ultradis)){Uz1.working=true;
   //Serial.print("ultrasonic z1 is working with min_dis= ");Serial.println(ultradis);
   }
   else {Uz1.working=false;
@@ -145,7 +144,7 @@ void Test_allsensors(void){
     ultradis=0;ultradis=Uz2.get_selfecho();delay(50);
   ultradis+=Uz2.get_selfecho();delay(50);
   ultradis+=Uz2.get_selfecho();ultradis=ultradis/3;Uz2.disable();
-  if(ultradis){Uz2.working=true;
+  if(!isnan(ultradis)){Uz2.working=true;
   //Serial.print("ultrasonic x2 is working with min_dis= ");Serial.println(ultradis);
   }
   else {Uz2.working=false;
