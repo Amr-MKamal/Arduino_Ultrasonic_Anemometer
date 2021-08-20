@@ -1,23 +1,33 @@
 # Advanced RPI4 Weather Station 
-
-Built upon an array of 6-ultrasonic’s facing each other in 3-dimentions as an
-anenometer, A DHT22 for air temperature & humidity, soil sensor, and other add-ons available according to your application,the device is powered by solar energy to make it fully autonomous as it is built to act as a local very accurate weather station for precision agricultural application , the device relays it's data to FarmOS instance either on web or locally hosted on the RPI , FarmOS helps you manage big sensor data easliy while monitring all farm sensors and reports in one platform
+This project  aims to build  an independent agricultural weather solar powered station for precision agricultural application 
+The device is based on raspberry pi & Arduino with ultrasonic anemometer and resistive soil sensor and DHT22 for air temperature & humidity
+and other add-ons available according to your application,the data and analytic information are sent to FarmOS that is either locally hosted or on hosting service (requires 4G usb dongle ).
+, FarmOS helps you manage big sensor data easliy while monitring all farm sensors and reports in one platform 
+while it can act as DaaS for other application
 This Product is the first of Farmtopia IOF Line and it's opensourced to support GODAN mission for easy & open agriculutral data 
 it can work both stationary and mobile and can be easy replicated at home as described here 
 ## Measured Data
 Measured Data| How
 ------------ | -------------
 Wind speed & frequency in 3-dimentional direction | By calculating Ultrasonic error
-Temperature & humidity | Am2301 Sensor
+Air Temperature & humidity | Am2301 Sensor
+GPS Location | Am2301 Sensor
 Soil Mositure | Resistive soil sensor
 
-## Needed Hardware
+## What you will need
+Raspberry Pi set : which is an RP computer with SD preloaded with raspberry OS , and a sense hat you can also add Pijuice 
+6xUltrasonic Anemometer : placed in perpendicular directions facing each other (X.Y.Z) as a network with different enables or different triggers.
+Dongles : USB Soil EC sensor, GPS Dongle (optionally/ input GPS coordinate manually) , 4G dongle (optionally)
+Solar System : a basic 50W solar panel with solar charger and a battery consisted with RP 
+FarmOS : which is the farming open-source management system that will act as an interface to the system to view and analyzie sensors data  .
+
 Number | Device
 ------------ | -------------
 1 | Raspberry pi 4 , 8GB version 
 1 | SD Card 128	
 1 | Touch Screen	(Optinal)
 1 | Raspberry Pinoir 2 Camera (Optinal)	
+1 | Raspberry USB GPS Dongle (Optinal)	
 1 | Arduino Mega 2560
 1 | Arduino USB Cable
 6 | JSNR04T Ultrasonics (Placed 40 Cm Apart)
@@ -38,7 +48,15 @@ File Name | Descirbtion
 README.md | Project Introduction
 
 //
-## Pi Setup & dependencies 
+## Pi Setup
+### Software Dependencies   
+RPI OS
+FarmOS Interface 
+Drupal Pi
+MariaDB
+Apache Server
+Gpsd
+.  
 Prerequisites
 apt-get update
 apt-get upgrade
