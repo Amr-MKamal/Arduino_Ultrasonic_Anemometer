@@ -1,7 +1,7 @@
 # Advanced RPI4 Weather Station 
 
 Built upon an array of 6-ultrasonic’s facing each other in 3-dimentions as an
-anenometer, A DHT22 for air temperature & humidity, soil sensor, and other add-ons available according to your application,the device is powered by solar energy to make it fully autonomous as it is built to act as a local very accurate weather station for precision agricultural application , the device relays it's data to FarmOS instance either on web or locally hosted on the RPI .
+anenometer, A DHT22 for air temperature & humidity, soil sensor, and other add-ons available according to your application,the device is powered by solar energy to make it fully autonomous as it is built to act as a local very accurate weather station for precision agricultural application , the device relays it's data to FarmOS instance either on web or locally hosted on the RPI , FarmOS helps you manage big sensor data easliy while monitring all farm sensors and reports in one platform
 This Product is the first of Farmtopia IOF Line and it's opensourced to support GODAN mission for easy & open agriculutral data 
 it can work both stationary and mobile and can be easy replicated at home as described here 
 ## Measured Data
@@ -17,23 +17,33 @@ Number | Device
 1 | Raspberry pi 4 , 8GB version 
 1 | SD Card 128	
 1 | Touch Screen	(Optinal)
-1 | Raspberry pi Pinoir 2 Camera (Optinal)	
+1 | Raspberry Pinoir 2 Camera (Optinal)	
 1 | Arduino Mega 2560
+1 | Arduino USB Cable
 6 | JSNR04T Ultrasonics (Placed 40 Cm Apart)
 1 | AM2301 tempuerature& humidity sensor
-1 | Soil Sensor
-1 | RPI Power Pack
-1 | MPPT Solar Charger
-1 | battery 
-1 | 30 Watt Solar Cell
-1 | 3D printed or Stanlesteel enclosure 
+1 | ARDUINO SOIL MOISTURE SENSOR MODULE 
+1 | Raspberry Pi 4 Battery Pack UPS
+1 | Mini-USB to USB cable
+1 | MPPT Solar Charger Controller 20A 12/24VDC with USB output
+1 | 12V super polymer Li-ion Battery-6800 mah 
+1 | Solar Panel 18V 30W 
+1 | Weather Station Frame 3D printed or Stanlesteel enclosure 
 
-////
+Note: The Solar Panel Charges the Main Super ploymer battery via the MPPT solar charger which also powers the UPS battery pack via usb cable which is responsible for powering the raspberry pi which in turns communicates and powers the Arduino via the USB , this configuration aims to stablize RPI power supply
 
 ## Repostory content
+File Name | Descirbtion 
+------------ | -------------
+README.md | Project Introduction
+
 //
 ## Pi Setup & dependencies 
 Prerequisites
+apt-get update
+apt-get upgrade
+apt-get dist-upgrade
+apt-get autoremove
 Configuring 
 Prepare the software
 Available Modules:
