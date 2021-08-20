@@ -12,7 +12,23 @@ Temperature & humidity | Am2301 Sensor
 Soil Mositure | Resistive soil sensor
 
 ## Needed Hardware
-mention hardware
+Number | Device
+------------ | -------------
+1 | Raspberry pi 4 , 8GB version 
+1 | SD Card 128	
+1 | Touch Screen	(Optinal)
+1 | Raspberry pi Pinoir 2 Camera (Optinal)	
+1 | Arduino Mega 2560
+6 | JSNR04T Ultrasonics (Placed 40 Cm Apart)
+1 | AM2301 tempuerature& humidity sensor
+1 | Soil Sensor
+1 | RPI Power Pack
+1 | MPPT Solar Charger
+1 | battery 
+1 | 30 Watt Solar Cell
+1 | 3D printed or Stanlesteel enclosure 
+
+////
 
 ## Repostory content
 //
