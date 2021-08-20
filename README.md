@@ -11,33 +11,55 @@ Wind speed & frequency in 3-dimentional direction | By calculating Ultrasonic er
 Temperature & humidity | Am2301 Sensor
 Soil Mositure | Resistive soil sensor
 
-
-Measured Data How
-Wind speed in 3-dimentional direction Ultrasonic based technology for the speed of sound in air
-Temperature & humidity across different areas and
-objects (soil , air , water , planets)
-Soil temperature sensor , IR temperature sensor & air temperature
-sensor
-Soil salinity & soil-moisture Buried soil sensors
-Accurate geolocation for near areas GPS
-/
-Arduino Ultrasonic Anenometer based on 6 JSNR04T and DH21
+## Needed Hardware
 mention hardware
-/
-Contents of the reposit
-Instilation/Pi setup 
-/
-Install and configure Arduino IDE
 
-Install the following libraries with your Arduino Library Manager in Sketch > Include Library > Manage Libraries...
-/
+## Repostory content
+//
+## Pi Setup & dependencies 
 Prerequisites
 Configuring 
 Prepare the software
 Available Modules:
 Running :
 Why Weather Station as a library:
+## Install & Configure Arduino 
+## Functional Weather Library
+//code documentation 
+Name	Type	Description 
+Wind_auto.c/h	Functional Class	Provides the needed classes and functions as an abstraction layer  (HAL/SAS) for the application
+Arduino_weather.ino	Application file	Uses the objects and methods to run the weather sensing program and aggregate the data to the rpi as a log
+Main_debug.	Debug & test functions	Various implementation of test cases to debug sensors/functions 
 
-Planned upgrades :
+Return Type	Input Type	Name	Description
+1	Construction 	(uint8_t EnPin, uint8_t RXpin, uint8_t type, uint16_t max_range)	JSNR04T	
+2	void 	void 	begin	
+3	void 	void 	virtual_trigger	
+4	void 	uint8_t timeout	resetTimeout	
+5	void 	void 	normalize	
+6	int	void	readJSNR04TSerial	
+7	uint16_t	void	get_selfecho	
+8	int	void	get_selfwindspeed	
+9	float	uint16_t x	transform_read	
+#	Return Type	Input Type	Name	Description
+1	Construction 	(uint8_t EnPin, uint8_t RXpin, uint8_t type, uint16_t max_range)	JSNR04T	Constructs a new object of type JSNR0RT that behaves as an instance of ultrasonic driver with EnPin for ground enable , RXpin for echo & type for operation type
+2	void 	void 	begin	Enables (triggers) the ultrasonic then identifies & start a new serial communication with it.
+3	void 	void 	virtual_trigger	Set the ground pin for the ultrasonic to low so it starts it’s normal operation
+4	void 	uint8_t timeout	resetTimeout	Change the millisecond timeout of the ultrasonic measuring to change the range 
+5	void 	void 	normalize	Remeasure distance between two ultrasonics in no wind condition to update Nowind_distance
+6	int	void	readJSNR04TSerial	Refer to JSNR04T datasheet for operation mode , reads the serial echo output of the ultrasonic and transforms it int / nan in case of invalid reading 
+7	uint16_t	void	get_selfecho	Resets timeout to change the range so the sensor only reads it’s echo 
+8	int	void	get_selfwindspeed	
+9	float	uint16_t x	transform_read	Transforms the measured distance with ultrasonic from mm to wind speed ( relative to sound speed)  
+//code documentation end
+# Extras 
+## Installing FarmOS on Docker_PI=
 
-License :
+
+Install the following libraries with your Arduino Library Manager in Sketch > Include Library > Manage Libraries...
+/
+
+
+## Planned upgrades :
+
+## License :
