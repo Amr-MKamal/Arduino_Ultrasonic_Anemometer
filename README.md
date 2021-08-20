@@ -1,14 +1,16 @@
-#Advanced RPI4 Weather Station 
+# Advanced RPI4 Weather Station 
 
 Built upon an array of 6-ultrasonic’s facing each other in 3-dimentions as an
 anenometer, A DHT22 for air temperature & humidity, soil sensor, and other add-ons available according to your application,the device is powered by solar energy to make it fully autonomous as it is built to act as a local very accurate weather station for precision agricultural application , the device relays it's data to FarmOS instance either on web or locally hosted on the RPI .
 This Product is the first of Farmtopia IOF Line and it's opensourced to support GODAN mission for easy & open agriculutral data 
 it can work both stationary and mobile and can be easy replicated at home as described here 
-##Measured Data
-First Header | Second Header
+## Measured Data
+Measured Data| How
 ------------ | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
+Wind speed & frequency in 3-dimentional direction | By calculating Ultrasonic error
+Temperature & humidity | Am2301 Sensor
+Soil Mositure | Resistive soil sensor
+
 
 Measured Data How
 Wind speed in 3-dimentional direction Ultrasonic based technology for the speed of sound in air
