@@ -11,14 +11,14 @@ Measured Data| How
 ------------ | -------------
 Wind speed & frequency in 3-dimentional direction | By calculating Ultrasonic error
 Air Temperature & humidity | Am2301 Sensor
-GPS Location | Am2301 Sensor
+GPS Location | USB GBS Dongle 
 Soil Mositure | Resistive soil sensor
 
 ## What you will need
-Raspberry Pi set : which is an RP computer with SD preloaded with raspberry OS , and a sense hat you can also add Pijuice 
+Raspberry Pi set : which is an RP computer with SD preloaded with raspberry OS , and a pinoir camera (optional )
 6xUltrasonic Anemometer : placed in perpendicular directions facing each other (X.Y.Z) as a network with different enables or different triggers.
 Dongles : USB Soil EC sensor, GPS Dongle (optionally/ input GPS coordinate manually) , 4G dongle (optionally)
-Solar System : a basic 50W solar panel with solar charger and a battery consisted with RP 
+Solar System : a basic 30W solar panel that Charges the Main Super ploymer battery via the MPPT solar charger which also powers the UPS battery pack via usb cable which is responsible for powering the raspberry pi which in turns communicates and powers the Arduino via the USB , this configuration aims to stablize RPI power supply
 FarmOS : which is the farming open-source management system that will act as an interface to the system to view and analyzie sensors data  .
 
 Number | Device
@@ -40,13 +40,18 @@ Number | Device
 1 | Solar Panel 18V 30W 
 1 | Weather Station Frame 3D printed or Stanlesteel enclosure 
 
-Note: The Solar Panel Charges the Main Super ploymer battery via the MPPT solar charger which also powers the UPS battery pack via usb cable which is responsible for powering the raspberry pi which in turns communicates and powers the Arduino via the USB , this configuration aims to stablize RPI power supply
 
 ## Repostory content
 File Name | Descirbtion 
 ------------ | -------------
 README.md | Project Introduction
-
+Arduino_weather.ino | Main Weather Sensing Arudino Application 
+DHT.cpp | DHT Driver & Class functionalites for Am2301
+DHT.h |Header File for DHT Class & Function documentation 
+Special_Debug_functions.ino | Unit Test Cases as a debug program 
+Wind_auto.cpp | Weather measurement functions
+Wind_auto.h |Header File for Wind Class & Function documentation 
+aggregator.sh | RPI bash script to catch arduino serial and aggregate json package
 //
 ## Pi Setup
 ### Software Dependencies   
