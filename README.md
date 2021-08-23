@@ -52,9 +52,11 @@ Special_Debug_functions.ino | Unit Test Cases as a debug program
 Wind_auto.cpp | Weather measurement functions
 Wind_auto.h |Header File for Wind Class & Function documentation 
 aggregator.sh | RPI bash script to catch arduino serial and aggregate json package
-//
+
+
 ## Pi Setup
 ### Software Dependencies   
+
 RPI OS
 FarmOS Interface 
 Drupal Pi
@@ -62,17 +64,16 @@ MariaDB
 Apache Server
 Gpsd
 .  
-Prerequisites
+### Prerequisites
 apt-get update
 apt-get upgrade
 apt-get dist-upgrade
 apt-get autoremove
 Configuring 
 Prepare the software
-Available Modules:
-Running :
-Why Weather Station as a library:
-## Install & Configure Arduino 
+### Install & Congifure FarmOS locally on Docker_PI
+
+### Install & Configure Arduino 
 ## Functional Weather Library
 //code documentation 
 Name	Type	Description 
@@ -101,8 +102,6 @@ Return Type	Input Type	Name	Description
 8	int	void	get_selfwindspeed	
 9	float	uint16_t x	transform_read	Transforms the measured distance with ultrasonic from mm to wind speed ( relative to sound speed)  
 //code documentation end
-# Extras 
-## Installing FarmOS on Docker_PI=
 
 
 Install the following libraries with your Arduino Library Manager in Sketch > Include Library > Manage Libraries...
