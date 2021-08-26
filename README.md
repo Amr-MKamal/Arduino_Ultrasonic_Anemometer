@@ -13,11 +13,11 @@ Wind speed & frequency in 3-dimentional direction | By calculating Ultrasonic er
 Air Temperature & humidity | Am2301 Sensor
 GPS Location | USB GBS Dongle 
 Soil Mositure | Resistive soil sensor
-
+Optional Add-ons | / 
 ## What you will need
 Raspberry Pi set : which is an RP computer with SD preloaded with raspberry OS , and a pinoir camera (optional )
 6xUltrasonic Anemometer : placed in perpendicular directions facing each other (X.Y.Z) as a network with different enables or different triggers.
-Dongles : USB Soil EC sensor, GPS Dongle (optionally/ input GPS coordinate manually) , 4G dongle (optionally)
+Dongles : GPS Dongle (Optional/you can input GPS coordinate manually) , 4G dongle (Optional) if there is no wifi coverage
 Solar System : a basic 30W solar panel that Charges the Main Super ploymer battery via the MPPT solar charger which also powers the UPS battery pack via usb cable which is responsible for powering the raspberry pi which in turns communicates and powers the Arduino via the USB , this configuration aims to stablize RPI power supply
 FarmOS : which is the farming open-source management system that will act as an interface to the system to view and analyzie sensors data  .
 
@@ -25,9 +25,6 @@ Number | Device
 ------------ | -------------
 1 | Raspberry pi 4 , 8GB version 
 1 | SD Card 128	
-1 | Touch Screen	(Optinal)
-1 | Raspberry Pinoir 2 Camera (Optinal)	
-1 | Raspberry USB GPS Dongle (Optinal)	
 1 | Arduino Mega 2560
 1 | Arduino USB Cable
 6 | JSNR04T Ultrasonics (Placed 40 Cm Apart)
@@ -39,6 +36,13 @@ Number | Device
 1 | 12V super polymer Li-ion Battery-6800 mah 
 1 | Solar Panel 18V 30W 
 1 | Weather Station Frame 3D printed or Stanlesteel enclosure 
+### Extras/Optionals 
+Number | Device
+------------ | -------------
+1 | Touch Screen	
+1 | Raspberry Pinoir 2 Camera 
+1 | Raspberry USB GPS Dongle 
+1 | MLX9046 IR Sensor 
 
 ### 3D Conecpt for the frame
 ![3D Conecpt for the frame](https://github.com/Amr-MKamal/Arduino_Ultrasonic_Anenometer/blob/main/3D_Concept.jpeg)
@@ -55,12 +59,12 @@ Wind_auto.cpp | Weather measurement functions
 Wind_auto.h |Header File for Wind Class & Function documentation 
 aggregator.sh | RPI bash script to catch arduino serial and aggregate json package
 
-
 ## Pi Setup
 -First Install RPI OS on 128GB SD
 
 ### Prerequisites
 -most of this dependencies may be preinstalled however it's good idea to recheck them 
+script depedecies 
 ```
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install libffi-dev libssl-dev
@@ -95,7 +99,8 @@ you can refer to this online [guide](https://www.linode.com/docs/guides/install-
 ### Add weather station as a sensor on FarmOS
 First make sure Sensor Module on FarmOS is enabled , you can enable and add module via the development branch 
 
-### Install & Configure Arduino 
+### Install & Configure Arduino libraries 
+Install the following libraries with your Arduino Library Manager in Sketch > Include Library > Manage Libraries...
 ## Functional Weather Library
 //code documentation 
 Name	Type	Description 
@@ -124,9 +129,8 @@ Return Type	Input Type	Name	Description
 8	int	void	get_selfwindspeed	
 9	float	uint16_t x	transform_read	Transforms the measured distance with ultrasonic from mm to wind speed ( relative to sound speed)  
 //code documentation end
+script code doucmentation 
 
-
-Install the following libraries with your Arduino Library Manager in Sketch > Include Library > Manage Libraries...
 /
 
 
