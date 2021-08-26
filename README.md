@@ -40,7 +40,7 @@ Number | Device
 1 | Solar Panel 18V 30W 
 1 | Weather Station Frame 3D printed or Stanlesteel enclosure 
 
-3D Conecpt for the frame
+![3D Conecpt for the frame](https://github.com/Amr-MKamal/Arduino_Ultrasonic_Anenometer/blob/main/3D_Concept.jpeg)
 
 ## Repostory content
 File Name | Descirbtion 
@@ -56,7 +56,6 @@ aggregator.sh | RPI bash script to catch arduino serial and aggregate json packa
 
 
 ## Pi Setup
-### Software Dependencies   
 -First Install RPI OS on 128GB SD
 
 ### Prerequisites
@@ -67,6 +66,7 @@ sudo apt-get install libffi-dev libssl-dev
 sudo apt install python3-dev
 sudo apt-get install -y python3 python3-pip
 sudo apt-get install php5 -y
+sudo apt install php-gd php-xml php-xmlrpc
 sudo apt install mariadb-server
 sudo apt-get install apache2 -y
 sudo apt-get install gpsd gpsd-clients python-gps
@@ -80,8 +80,8 @@ sudo systemctl enable docker
 ```
 -Install FarmOS Locally on Docker 
 [FarmOS](https://github.com/farmOS) 
-> is a web-based application for farm management, planning, and record keeping. It is developed by a community of farmers, developers, researchers, and organizations with the aim of providing a standard platform for agricultural data collection and management
-We use FarmOS for quickly interfacing with sensors and analyzing their big data 
+> is a web-based application for farm management, planning, and record keeping. It is developed by a community of farmers, developers, researchers, and organizations with the aim of providing a standard platform for agricultural data collection and management > <
+ We use FarmOS for quickly interfacing with sensors and analyzing their big data 
 ```
 git clone https://github.com/farmOS/farmOS.git
 cd farmOS
@@ -89,7 +89,8 @@ sudo docker build -t farmos .
 sudo docker run -p 80:80 -v ${PWD}/.data/www:/var/www/html farmos
 ```
 You should refer to this [guide](https://farmos.org/development/docker/) on FarmOS offical website for more details 
-
+### Configure FarmOS
+you can refer to this online [guide](https://www.linode.com/docs/guides/install-farmos/) to help you configure FarmOS installtion 
 ### Add weather station as a sensor on FarmOS
 First make sure Sensor Module on FarmOS is enabled , you can enable and add module via the development branch 
 
