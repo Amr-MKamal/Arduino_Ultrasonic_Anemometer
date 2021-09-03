@@ -52,9 +52,9 @@ Serial.print("\"Maximum_Speed_z\": ");Serial.print("\"");Serial.print(WindZ.maxw
 Serial.print("\"Minmimum_Speed_x\": ");Serial.print("\"");Serial.print(WindX.minwind);Serial.print("\"");Serial.print(" , ");
 Serial.print("\"Minmimum_Speed_y\": ");Serial.print("\"");Serial.print(WindY.minwind);Serial.print("\"");Serial.print(" , ");
 Serial.print("\"Minmimum_Speed_z\" :");Serial.print("\"");Serial.print(WindZ.minwind);Serial.print("\"");Serial.print(" , ");
-Serial.print("\"Wind_frequency_x\": ");Serial.print("\"");Serial.print(WindX.gust);Serial.print("\"");Serial.print(" , ");
-Serial.print("\"Wind_frequency_y\" :");Serial.print("\"");Serial.print(WindY.gust);Serial.print("\"");Serial.print(" , ");
-Serial.print("\"Wind_frequency_z \":");Serial.print("\"");Serial.print(WindZ.gust);Serial.print("\"");Serial.print(" , ");
+Serial.print("\"Wind_frequencyofchange_x\": ");Serial.print("\"");Serial.print(WindX.gust);Serial.print("\"");Serial.print(" , ");
+Serial.print("\"Wind_frequencyofchange_y\" :");Serial.print("\"");Serial.print(WindY.gust);Serial.print("\"");Serial.print(" , ");
+Serial.print("\"Wind_frequencyofchange_z \":");Serial.print("\"");Serial.print(WindZ.gust);Serial.print("\"");Serial.print(" , ");
 Serial.print("\"Cycle Overshoot\":");Serial.print("\"");Serial.print(allmiss);Serial.print("\"");
 Serial.println(" }");
 }
