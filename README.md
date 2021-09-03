@@ -166,6 +166,7 @@ script  doucmentation & usage
 
 /
 ## Farmtopia Disclaimer :
+![](https://github.com/Amr-MKamal/Arduino_Ultrasonic_Anenometer/blob/main/farmtopia-logo.png)
 This opensource project and all of it's components are the sole responsibility of it's developer, and although Farmtopia uses similar devices to build the commercial version of this weather station it doesn't necessarily use the same sourcecode or logic or hardware components nor it's responsible for the validity or the application of this opensource project . 
 
 ## Planned upgrades :
