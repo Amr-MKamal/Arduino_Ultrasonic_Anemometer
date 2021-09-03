@@ -4,6 +4,8 @@ The device is based on raspberry pi & Arduino with ultrasonic anemometer and res
 and other add-ons available according to your application, the data and analytic information are sent as JSON packages to FarmOS that is either locally hosted or on hosting service (requires 4G usb dongle), FarmOS helps you manage big sensor data easliy while monitring all farm sensors and reports in one platform, it can also act as DaaS for other application.
 This Product is the first of Farmtopia IOF( Internet Of Farm) Line and it's opensourced to support GODAN mission for easy & open agriculutral data 
 it can work both stationary and mobile and can be easy replicated at home as described here 
+![](https://github.com/Amr-MKamal/Arduino_Ultrasonic_Anenometer/blob/main/farmtopia-logo.png)
+
 ## Measured Data
 Measured Data| How
 ------------ | -------------
@@ -166,7 +168,6 @@ script  doucmentation & usage
 
 /
 ## Farmtopia Disclaimer :
-![](https://github.com/Amr-MKamal/Arduino_Ultrasonic_Anenometer/blob/main/farmtopia-logo.png)
 This opensource project and all of it's components are the sole responsibility of it's developer, and although Farmtopia uses similar devices to build the commercial version of this weather station it doesn't necessarily use the same sourcecode or logic or hardware components nor it's responsible for the validity or the application of this opensource project . 
 
 ## Planned upgrades :
