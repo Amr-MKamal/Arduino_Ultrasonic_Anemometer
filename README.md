@@ -127,10 +127,11 @@ get_speedofsound|float Tc,float RH|float|estimates speed of sound in a given air
 set_windsensor|DHT|void|passes the pointer of the DHT to wind class 
 get_echofromahead|JSNR04T u1 ,JSNR04T u2|int|an indpedandt function to also read the echo of the facing sensor( for testing ).
 wind_cycle| Wind* WindX ,Wind* WindY ,Wind* WindZ|void|calculates and updates the windspeed and averge (50 measuerment averge) wind speed of 3 wind obejcts representing the wind in 3D.
-
-
+### Usage Examples :
+( from wind_cycle and down )
+ 
 //code documentation end
-script code doucmentation 
+script  doucmentation & usage 
 
 /
 ## Farmtopia Disclaimer :
