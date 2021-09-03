@@ -109,24 +109,24 @@ and wind class which prefroms the mathmatical logic on recorded data to output t
 
 Function Name | Input | Return | Descirbtion 
 ------------ | -------------| -------------| -------------
-JSNR04T(Constructor) |	(uint8_t EnPin, uint8_t RXpin, uint8_t type, uint16_t max_range) | void |		Constructs a new object of type JSNR0RT that behaves as an instance of ultrasonic driver with EnPin for ground enable , RXpin for echo & type for operation type.
-JSNR04T.begin | void | void | Enables (triggers) the ultrasonic then identifies & start a new serial communication with it.
-JSNR04T.virtual_trigger |	void | void | Set the ground pin for the ultrasonic to low so it starts it’s normal operation
-JSNR04T.resetTimeout |	uint8_t timeout |	void | Change the millisecond timeout of the ultrasonic measuring to change the range 
-JSNR04T.normalize |	void | void | Remeasure distance between two ultrasonics in no wind condition to update Nowind_distance
-JSNR04T.readJSNR04TSerial |	void |	int	Refer to JSNR04T datasheet for operation mode , reads the serial echo output of the ultrasonic and transforms it int / nan in case of invalid reading 
-JSNR04T.get_selfecho |	void |	uint16_t |	Resets timeout to change the range so the sensor only reads it’s echo 
-JSNR04T.get_selfwindspeed	void	int	
-JSNR04T.transform_read |	uint16_t x |	float |	Transforms the measured distance with ultrasonic from mm to wind speed ( relative to sound speed)  
-Wind(Constructor) |	JSNR04T* ,JSNR04T* | Constructs an object of type wind which uses a pair of ultrasonic to measure the wind speed between them
-Wind.update |	void | 	void | 	Update class values of wind speeds by taking a new read , also calculates the rate of change in windspeed 
-Wind.get_avergewind |	void | 	float |	Calculates the average of 4 measurements between the ultrasonic pair 
-Wind.get_echofromahead |	void | 	uint16_t |	Reads the echo of the facing sensor
-renew_temp_hu | DHT ,float* temp ,float* hum | void | updates the value of temperature and humidity for a given DHT sensor
-get_speedofsound | float Tc,float RH | float | estimates speed of sound in a given air temperature and humidity according to
-set_windsensor | DHT | void | passes the pointer of the DHT to wind class 
-get_echofromahead | JSNR04T u1 ,JSNR04T u2 | int | an indpedandt function to also read the echo of the facing sensor ( for testing )
-wind_cycle | Wind* WindX ,Wind* WindY ,Wind* WindZ  | void | calculates and updates the windspeed and averge (50 measuerment averge) wind speed of 3 wind obejcts representing the wind in 3D
+JSNR04T(Constructor)|uint8_t EnPin, uint8_t RXpin, uint8_t type, uint16_t max_range)|void|Constructs a new object of type JSNR0RT that behaves as an instance of ultrasonic driver with EnPin for ground enable , RXpin for echo & type for operation type.
+JSNR04T.begin|void|void|Enables (triggers) the ultrasonic then identifies & start a new serial communication with it.
+JSNR04T.virtual_trigger|void|void|Set the ground pin for the ultrasonic to low so it starts it’s normal operation.
+JSNR04T.resetTimeout|uint8_t timeout|void|Change the millisecond timeout of the ultrasonic measuring to change the range.
+JSNR04T.normalize|void|void|Remeasure distance between two ultrasonics in no wind condition to update Nowind_distance.
+JSNR04T.readJSNR04TSerial|void|int|reads the serial echo output of the ultrasonic and transforms it to int/nan in case of invalid reading.
+JSNR04T.get_selfecho|void|uint16_t|Resets timeout to change the range so the sensor only reads it’s echo. 
+JSNR04T.get_selfwindspeed|void|int| reads the time needed for an ultrasonic to read it's own echo(round trip) and transforms it to windspeed.
+JSNR04T.transform_read|uint16_t x|float|	Transforms the measured distance with ultrasonic from mm to wind speed ( relative to sound speed).  
+Wind(Constructor)|	JSNR04T* ,JSNR04T* | Constructs an object of type wind which uses a pair of ultrasonic to measure the wind speed between them.
+Wind.update|void|void|Update class values of wind speeds by taking a new read , also calculates the rate of change in windspeed.
+Wind.get_avergewind|void|float|Calculates the average of 4 measurements between the ultrasonic pair accroding to working mode.
+Wind.get_echofromahead|void|uint16_t|Reads the echo of the facing sensor.
+renew_temp_hu|DHT ,float* temp ,float* hum|void|updates the value of temperature and humidity for a given DHT sensor
+get_speedofsound|float Tc,float RH|float|estimates speed of sound in a given air temperature and humidity according to
+set_windsensor|DHT|void|passes the pointer of the DHT to wind class 
+get_echofromahead|JSNR04T u1 ,JSNR04T u2|int|an indpedandt function to also read the echo of the facing sensor( for testing ).
+wind_cycle| Wind* WindX ,Wind* WindY ,Wind* WindZ|void|calculates and updates the windspeed and averge (50 measuerment averge) wind speed of 3 wind obejcts representing the wind in 3D.
 
 
 //code documentation end
