@@ -143,4 +143,4 @@ This opensource project and all of it's components are the sole responsibility o
 - [ ] Use FireBase as a backup for sensors data
 - [ ] Implement Evapotranspiration module
 
-## License :
+## License : [](License) MIT License 
