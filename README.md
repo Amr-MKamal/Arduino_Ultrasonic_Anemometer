@@ -128,8 +128,39 @@ set_windsensor|DHT|void|passes the pointer of the DHT to wind class
 get_echofromahead|JSNR04T u1 ,JSNR04T u2|int|an indpedandt function to also read the echo of the facing sensor( for testing ).
 wind_cycle| Wind* WindX ,Wind* WindY ,Wind* WindZ|void|calculates and updates the windspeed and averge (50 measuerment averge) wind speed of 3 wind obejcts representing the wind in 3D.
 ### Usage Examples :
-( from wind_cycle and down )
+
+define the needed pin values & configuration , construct the cycle objects according to pin configuration & sensors type , identify cycle variables
+```
+#define DHTPIN 53
+#define mutual 0
+#define soil_analog A0
+#define soil_max 550
+#define soil_min 10
+#define Cycle_offset 10
+#define DHTTYPE DHT21  
+DHT dht(DHTPIN, DHTTYPE);
+JSNR04T Ux1(45,10,mutual,2000) ,Ux2(37,13,mutual,2000),Uy1(47,50,mutual,2000),Uy2(31,10,mutual,2000) ,Uz1(41,12,mutual,2000),Uz2(39,11,mutual,2000);
+Wind WindX(&Ux1,&Ux2), WindY(&Uy1,&Uy2) ,WindZ(&Uz1,&Uz2);
+float CycTemp , CycHum , _CSS=340 , winspeed;
+ ```
+ Call wind_cycle to update all values 
+ ```
+ wind_cycle(&WindX ,&WindY, &WindZ);
+ ```
+ or just call Wind.update to update instantenous speed of any dimention 
+ ```
+ Windx.update();
+ ```
+ print the values to serial port as JSON , > "parameter":"value",
+  ```
+Serial.print("\"Wind_Speed_x\": ");Serial.print("\"");Serial.print(WindX.avgwind);Serial.print("\"");Serial.print(" , ");
+Serial.print("\"Maximum_Speed_x\": ");Serial.print("\"");Serial.print(WindX.maxwind);Serial.print(" , ");
+Serial.print("\"Minmimum_Speed_x\": ");Serial.print("\"");Serial.print(WindX.minwind);Serial.print("\"");Serial.print(" , ");
+Serial.print("\"Wind_frequencyofchange_x\": ");Serial.print("\"");Serial.print(WindX.gust);Serial.print("\"");Serial.print(" , ");
+ ```
+use allmiss to adapt cycle delay to measuerment errors as following 
  
+
 //code documentation end
 script  doucmentation & usage 
 
@@ -143,4 +174,4 @@ This opensource project and all of it's components are the sole responsibility o
 - [ ] Use FireBase as a backup for sensors data
 - [ ] Implement Evapotranspiration module
 
-## License : [](License) MIT License 
+## License : [](https://github.com/Amr-MKamal/Arduino_Ultrasonic_Anenometer/blob/main/LICENSE) MIT License 
