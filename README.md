@@ -107,34 +107,28 @@ you can refer to Adafruit [DHT](https://github.com/adafruit/DHT-sensor-library) 
 built on two classes,	JSNR04T which is an interface class that provides an instance of JSNR04T ultrasonic chip in **Auto mode** , with the needed functions to use the device as wind measurement tool by using the divergence in reading ultrasonic measurements with self-corrected sound speed calculated from air temperature & humidity.
 and wind class which prefroms the mathmatical logic on recorded data to output the needed weahter details 
 
-Function Name | Input Type | Return Type | Descirbtion 
+Function Name | Input | Return | Descirbtion 
 ------------ | -------------| -------------| -------------
+JSNR04T(Constructor) |	(uint8_t EnPin, uint8_t RXpin, uint8_t type, uint16_t max_range) | void |		Constructs a new object of type JSNR0RT that behaves as an instance of ultrasonic driver with EnPin for ground enable , RXpin for echo & type for operation type.
+JSNR04T.begin | void | void | Enables (triggers) the ultrasonic then identifies & start a new serial communication with it.
+JSNR04T.virtual_trigger |	void | void | Set the ground pin for the ultrasonic to low so it starts it’s normal operation
+JSNR04T.resetTimeout |	uint8_t timeout |	void | Change the millisecond timeout of the ultrasonic measuring to change the range 
+JSNR04T.normalize |	void | void | Remeasure distance between two ultrasonics in no wind condition to update Nowind_distance
+JSNR04T.readJSNR04TSerial |	void |	int	Refer to JSNR04T datasheet for operation mode , reads the serial echo output of the ultrasonic and transforms it int / nan in case of invalid reading 
+JSNR04T.get_selfecho |	void |	uint16_t |	Resets timeout to change the range so the sensor only reads it’s echo 
+JSNR04T.get_selfwindspeed	void	int	
+JSNR04T.transform_read |	uint16_t x |	float |	Transforms the measured distance with ultrasonic from mm to wind speed ( relative to sound speed)  
+Wind(Constructor) |	JSNR04T* ,JSNR04T* | Constructs an object of type wind which uses a pair of ultrasonic to measure the wind speed between them
+Wind.update |	void | 	void | 	Update class values of wind speeds by taking a new read , also calculates the rate of change in windspeed 
+Wind.get_avergewind |	void | 	float |	Calculates the average of 4 measurements between the ultrasonic pair 
+Wind.get_echofromahead |	void | 	uint16_t |	Reads the echo of the facing sensor
+renew_temp_hu | DHT ,float* temp ,float* hum | void | updates the value of temperature and humidity for a given DHT sensor
+get_speedofsound | float Tc,float RH | float | estimates speed of sound in a given air temperature and humidity according to
+set_windsensor | DHT | void | passes the pointer of the DHT to wind class 
+get_echofromahead | JSNR04T u1 ,JSNR04T u2 | int | an indpedandt function to also read the echo of the facing sensor ( for testing )
+wind_cycle | Wind* WindX ,Wind* WindY ,Wind* WindZ  | void | calculates and updates the windspeed and averge (50 measuerment averge) wind speed of 3 wind obejcts representing the wind in 3D
 
-Name	Type	Description 
-Wind_auto.c/h	Functional Class	Provides the needed classes and functions as an abstraction layer  (HAL/SAS) for the application
-Arduino_weather.ino	Application file	Uses the objects and methods to run the weather sensing program and aggregate the data to the rpi as a log
-Main_debug.	Debug & test functions	Various implementation of test cases to debug sensors/functions 
 
-Return Type	Input Type	Name	Description
-1	Construction 	(uint8_t EnPin, uint8_t RXpin, uint8_t type, uint16_t max_range)	JSNR04T	
-2	void 	void 	begin	
-3	void 	void 	virtual_trigger	
-4	void 	uint8_t timeout	resetTimeout	
-5	void 	void 	normalize	
-6	int	void	readJSNR04TSerial	
-7	uint16_t	void	get_selfecho	
-8	int	void	get_selfwindspeed	
-9	float	uint16_t x	transform_read	
-#	Return Type	Input Type	Name	Description
-1	Construction 	(uint8_t EnPin, uint8_t RXpin, uint8_t type, uint16_t max_range)	JSNR04T	Constructs a new object of type JSNR0RT that behaves as an instance of ultrasonic driver with EnPin for ground enable , RXpin for echo & type for operation type
-2	void 	void 	begin	Enables (triggers) the ultrasonic then identifies & start a new serial communication with it.
-3	void 	void 	virtual_trigger	Set the ground pin for the ultrasonic to low so it starts it’s normal operation
-4	void 	uint8_t timeout	resetTimeout	Change the millisecond timeout of the ultrasonic measuring to change the range 
-5	void 	void 	normalize	Remeasure distance between two ultrasonics in no wind condition to update Nowind_distance
-6	int	void	readJSNR04TSerial	Refer to JSNR04T datasheet for operation mode , reads the serial echo output of the ultrasonic and transforms it int / nan in case of invalid reading 
-7	uint16_t	void	get_selfecho	Resets timeout to change the range so the sensor only reads it’s echo 
-8	int	void	get_selfwindspeed	
-9	float	uint16_t x	transform_read	Transforms the measured distance with ultrasonic from mm to wind speed ( relative to sound speed)  
 //code documentation end
 script code doucmentation 
 
