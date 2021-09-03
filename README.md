@@ -1,3 +1,4 @@
+![](https://github.com/Amr-MKamal/Arduino_Ultrasonic_Anenometer/blob/main/farmtopia-logo.png)
 # Advanced RPI4 Weather Station 
 This project aims to build an independent agricultural weather solar powered station for precision agricultural application 
 The device is based on raspberry pi & Arduino with ultrasonic anemometer and resistive soil sensor and DHT22 for air temperature & humidity
@@ -167,7 +168,6 @@ script  doucmentation & usage
 /
 ## Farmtopia Disclaimer :
 This opensource project and all of it's components are the sole responsibility of it's developer, and although Farmtopia uses similar devices to build the commercial version of this weather station it doesn't necessarily use the same sourcecode or logic or hardware components nor it's responsible for the validity or the application of this opensource project . 
-![](https://github.com/Amr-MKamal/Arduino_Ultrasonic_Anenometer/blob/main/farmtopia-logo.png)
 
 ## Planned upgrades :
 - [x] Project Pilot
