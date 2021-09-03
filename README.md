@@ -118,7 +118,7 @@ JSNR04T.readJSNR04TSerial|void|int|reads the serial echo output of the ultrasoni
 JSNR04T.get_selfecho|void|uint16_t|Resets timeout to change the range so the sensor only reads it’s echo. 
 JSNR04T.get_selfwindspeed|void|int| reads the time needed for an ultrasonic to read it's own echo(round trip) and transforms it to windspeed.
 JSNR04T.transform_read|uint16_t x|float|	Transforms the measured distance with ultrasonic from mm to wind speed ( relative to sound speed).  
-Wind(Constructor)|	JSNR04T* ,JSNR04T* | Constructs an object of type wind which uses a pair of ultrasonic to measure the wind speed between them.
+Wind(Constructor)|JSNR04T* ,JSNR04T* |void| Constructs an object of type wind which uses a pair of ultrasonic to measure the wind speed between them.
 Wind.update|void|void|Update class values of wind speeds by taking a new read , also calculates the rate of change in windspeed.
 Wind.get_avergewind|void|float|Calculates the average of 4 measurements between the ultrasonic pair accroding to working mode.
 Wind.get_echofromahead|void|uint16_t|Reads the echo of the facing sensor.
