@@ -55,14 +55,13 @@ DHT.h |Header File for DHT Class & Function documentation
 Special_Debug_functions.ino | Unit Test Cases as a debug program 
 Wind_auto.cpp | Weather measurement functions
 Wind_auto.h |Header File for Wind Class & Function documentation 
-aggregator.sh | RPI bash script to catch arduino serial and aggregate json package
+aggregator.sh | RPI bash script to catch arduino serial and aggregate json package to farmos server
 
 ## Pi Setup
--First Install RPI OS on 128GB SD
-
+-First Install RPI OS(Full Version) on 128GB SD card, it's adviced that the SD be as fast as possbile to enhance the overall preformance of Pi.
+If you're using Headless pi , enable SSH on configuration file you can find it in the boot partion
 ### Prerequisites
 -most of this dependencies may be preinstalled however it's good idea to recheck them 
-script depedecies 
 ```
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install libffi-dev libssl-dev
@@ -74,6 +73,7 @@ sudo apt install mariadb-server
 sudo apt-get install apache2 -y
 sudo apt-get install gpsd gpsd-clients python-gps
 sudo apt-get install arduino
+git clone https://github.com/tbird20d/grabserial
 ```
 -Install Docker with CLI
 ```
@@ -83,8 +83,7 @@ sudo systemctl enable docker
 ```
 -Install FarmOS Locally on Docker 
 [FarmOS](https://github.com/farmOS) 
-> FarmOS is a web-based application for farm management, planning, and record keeping. It is developed by a community of farmers, developers, researchers, and organizations with the aim of providing a standard platform for agricultural data collection and management > 
-
+> FarmOS is a web-based application for farm management, planning, and record keeping. It is developed by a community of farmers, developers, researchers, and organizations with the aim of providing a standard platform for agricultural data collection and management 
 
  We use FarmOS for quickly interfacing with sensors and analyzing their big data 
 ```
@@ -97,10 +96,11 @@ You should refer to this [guide](https://farmos.org/development/docker/) on Farm
 ### Configure FarmOS
 you can refer to this online [guide](https://www.linode.com/docs/guides/install-farmos/) to help you configure FarmOS installtion 
 ### Add weather station as a sensor on FarmOS
-First make sure Sensor Module on FarmOS is enabled , you can enable and add module via the development branch 
+First make sure Sensor Module on FarmOS is enabled , you can enable and add module via the development branch ( just really a super user on the local platform) , if you're using a hosting service make sure to ask them to enable the sensors module.
 
 ### Install & Configure Arduino libraries 
 Install the following libraries with your Arduino Library Manager in Sketch > Include Library > Manage Libraries...
+-<SoftwareSerial.h>
 ## Functional Weather Library
 //code documentation 
 Name	Type	Description 
@@ -136,5 +136,9 @@ script code doucmentation
 This opensource project and all of it's components are the sole responsibility of it's developer, and although Farmtopia uses similar devices to build the commercial version of this weather station it doesn't necessarily use the same sourcecode or logic or hardware components nor it's responsible for the validity or the application of this opensource project . 
 
 ## Planned upgrades :
+- [x] Project Pilot
+- [ ] Replace Arduino Mega with MKR1310
+- [ ] Use FireBase as a backup for sensors data
+- [ ] Implement Evapotranspiration module
 
 ## License :
