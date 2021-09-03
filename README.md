@@ -1,10 +1,8 @@
 # Advanced RPI4 Weather Station 
-This project  aims to build  an independent agricultural weather solar powered station for precision agricultural application 
+This project aims to build an independent agricultural weather solar powered station for precision agricultural application 
 The device is based on raspberry pi & Arduino with ultrasonic anemometer and resistive soil sensor and DHT22 for air temperature & humidity
-and other add-ons available according to your application,the data and analytic information are sent to FarmOS that is either locally hosted or on hosting service (requires 4G usb dongle ).
-, FarmOS helps you manage big sensor data easliy while monitring all farm sensors and reports in one platform 
-while it can act as DaaS for other application
-This Product is the first of Farmtopia IOF Line and it's opensourced to support GODAN mission for easy & open agriculutral data 
+and other add-ons available according to your application, the data and analytic information are sent as JSON packages to FarmOS that is either locally hosted or on hosting service (requires 4G usb dongle), FarmOS helps you manage big sensor data easliy while monitring all farm sensors and reports in one platform, it can also act as DaaS for other application.
+This Product is the first of Farmtopia IOF( Internet Of Farm) Line and it's opensourced to support GODAN mission for easy & open agriculutral data 
 it can work both stationary and mobile and can be easy replicated at home as described here 
 ## Measured Data
 Measured Data| How
@@ -85,7 +83,9 @@ sudo systemctl enable docker
 ```
 -Install FarmOS Locally on Docker 
 [FarmOS](https://github.com/farmOS) 
-> is a web-based application for farm management, planning, and record keeping. It is developed by a community of farmers, developers, researchers, and organizations with the aim of providing a standard platform for agricultural data collection and management > <
+> FarmOS is a web-based application for farm management, planning, and record keeping. It is developed by a community of farmers, developers, researchers, and organizations with the aim of providing a standard platform for agricultural data collection and management > 
+
+
  We use FarmOS for quickly interfacing with sensors and analyzing their big data 
 ```
 git clone https://github.com/farmOS/farmOS.git
@@ -132,7 +132,8 @@ Return Type	Input Type	Name	Description
 script code doucmentation 
 
 /
-
+## Farmtopia Disclaimer :
+This opensource project and all of it's components are the sole responsibility of it's developer, and although Farmtopia uses similar devices to build the commercial version of this weather station it doesn't necessarily use the same sourcecode or logic or hardware components nor it's responsible for the validity or the application of this opensource project . 
 
 ## Planned upgrades :
 
