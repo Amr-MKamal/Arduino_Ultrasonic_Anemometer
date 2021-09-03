@@ -81,8 +81,7 @@ sudo curl -sSL https://get.docker.com | sudo sh
 sudo pip3 install docker-compose
 sudo systemctl enable docker
 ```
--Install FarmOS Locally on Docker 
-[FarmOS](https://github.com/farmOS) 
+-Install [FarmOS](https://github.com/farmOS) Locally on Docker 
 > FarmOS is a web-based application for farm management, planning, and record keeping. It is developed by a community of farmers, developers, researchers, and organizations with the aim of providing a standard platform for agricultural data collection and management 
 
  We use FarmOS for quickly interfacing with sensors and analyzing their big data 
@@ -102,7 +101,15 @@ First make sure Sensor Module on FarmOS is enabled , you can enable and add modu
 Install the following libraries with your Arduino Library Manager in Sketch > Include Library > Manage Libraries...
 -<SoftwareSerial.h>
 ## Functional Weather Library
-//code documentation 
+### DHT.h/DHT.CPP
+you can refer to Adafruit [DHT](https://github.com/adafruit/DHT-sensor-library) library for DHT doucmentation , however for some reason they don't read temperature & humidity together so we will be using dht.read function with data [] buffer in a new function called renew_temp_hu(DHT ,Float* ,Float*) 
+### Wind_auto.h/Wind_auto.cpp
+built on two classes,	JSNR04T which is an interface class that provides an instance of JSNR04T ultrasonic chip in **Auto mode** , with the needed functions to use the device as wind measurement tool by using the divergence in reading ultrasonic measurements with self-corrected sound speed calculated from air temperature & humidity.
+and wind class which prefroms the mathmatical logic on recorded data to output the needed weahter details 
+
+Function Name | Input Type | Return Type | Descirbtion 
+------------ | -------------| -------------| -------------
+
 Name	Type	Description 
 Wind_auto.c/h	Functional Class	Provides the needed classes and functions as an abstraction layer  (HAL/SAS) for the application
 Arduino_weather.ino	Application file	Uses the objects and methods to run the weather sensing program and aggregate the data to the rpi as a log
