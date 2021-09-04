@@ -152,19 +152,31 @@ float CycTemp , CycHum , _CSS=340 , winspeed;
  ```
  Windx.update();
  ```
- print the values to serial port as JSON , > "parameter":"value",
+ print the values to serial port as JSON.
+ > "parameter":"value",
   ```
 Serial.print("\"Wind_Speed_x\": ");Serial.print("\"");Serial.print(WindX.avgwind);Serial.print("\"");Serial.print(" , ");
 Serial.print("\"Maximum_Speed_x\": ");Serial.print("\"");Serial.print(WindX.maxwind);Serial.print(" , ");
 Serial.print("\"Minmimum_Speed_x\": ");Serial.print("\"");Serial.print(WindX.minwind);Serial.print("\"");Serial.print(" , ");
 Serial.print("\"Wind_frequencyofchange_x\": ");Serial.print("\"");Serial.print(WindX.gust);Serial.print("\"");Serial.print(" , ");
  ```
-use allmiss to adapt cycle delay to measuerment errors as following 
- 
+use allmiss to adapt cycle delay to measuerment errors as following //update cycle timing to avegere with 2 mintues , and gust of 30seconds 
+  ```
+Serial.print("\"Wind_Speed_x\": ");Serial.print("\"");Serial.print(WindX.avgwind);Serial.print("\"");Serial.print(" , ");
 
-//code documentation end
+ ```
+ use the special_debug_functions.ino to diagnose the application with stepped unit tests.
+  ```
+Serial.print("\"Wind_Speed_x\": ");Serial.print("\"");Serial.print(WindX.avgwind);Serial.print("\"");Serial.print(" , ");
+
+ ```
+//code documentation end , timing , the cron job activates the script every 10 mintues , the script searches for arduino serial for 9 mintues while it takes the arduino 4:30 minutes to record new readings , the cycle limit is 30 seconds and the cron job will run each 2 mintues 
+Use grabserial to catch arduino serial every 2 mintues 
 script  doucmentation & usage 
+  ```
+Serial.print("\"Wind_Speed_x\": ");Serial.print("\"");Serial.print(WindX.avgwind);Serial.print("\"");Serial.print(" , ");
 
+ ```
 /
 ## Farmtopia Disclaimer :
 This opensource project and all of it's components are the sole responsibility of it's developer, and although Farmtopia uses similar devices to build the commercial version of this weather station it doesn't necessarily use the same sourcecode or logic or hardware components nor it's responsible for the validity or the application of this opensource project . 
