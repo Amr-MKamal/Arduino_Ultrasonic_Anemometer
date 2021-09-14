@@ -161,7 +161,7 @@ void wind_cycle(Wind* WindX ,Wind* WindY ,Wind* WindZ ){
   WindX->update();
   WindY->update();
   WindZ->update();
-  delay(180);
+  delay(200);
   }
 WindX->avgwind/=WindX->gust;
 WindY->avgwind/=WindY->gust;
