@@ -35,8 +35,8 @@ _tempmiss=0;
   soilM = map(soilM,1000,0,0,1000);
   //Build JSON Package 
 build_json_package();
-WindX.avgwind=0;  //optional reset this averge if you want each cycle averge to be unique 
-delay(90000);
+//WindX.avgwind=0;  //optional reset this averge if you want each cycle averge to be unique 
+delay(19000);
 }
 void build_json_package(void) {
 Serial.print(" {");
