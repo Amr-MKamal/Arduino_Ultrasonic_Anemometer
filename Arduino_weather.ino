@@ -15,9 +15,8 @@ DHT dht(DHTPIN, DHTTYPE);
 JSNR04T Ux1(45,10,mutual,2000) ,Ux2(37,13,mutual,2000),Uy1(47,50,mutual,2000),Uy2(31,10,mutual,2000) ,Uz1(41,12,mutual,2000),Uz2(39,11,mutual,2000);
 Wind WindX(&Ux1,&Ux2), WindY(&Uy1,&Uy2) ,WindZ(&Uz1,&Uz2);
 float CycTemp , CycHum , _CSS=340 , winspeed;
-int  ultradis ;
 int soilM;
-uint8_t allmiss;
+uint16_t allmiss,cycledelay=19000;
 void setup() {
   Serial.begin(9600);
   set_windsensor(dht);
@@ -35,8 +34,9 @@ _tempmiss=0;
   soilM = map(soilM,1000,0,0,1000);
   //Build JSON Package 
 build_json_package();
+  cycledelay-=allmiss;
 //WindX.avgwind=0;  //optional reset this averge if you want each cycle averge to be unique 
-delay(19000);
+delay(cycledelay);
 }
 void build_json_package(void) {
 Serial.print(" {");
