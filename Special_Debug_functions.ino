@@ -31,12 +31,12 @@ void loop() {
    if(dht.working) //doesn't update before 2 seconds
    delay(10);
  ultradis=Uz1.get_selfecho();
- winspeed=Uz1.transform_read(ultradis);
  Serial.print("ultrasonic z1 is ");Serial.println(ultradis);
+ winspeed=Uz1.transform_read(ultradis);
  Serial.print("ultrasonic z1 windspeed  "); Serial.println(winspeed);
  ultradis=Uz2.get_selfecho();
- winspeed=Uz2.transform_read(ultradis);
  Serial.print("ultrasonic z2 is ");Serial.println(ultradis);
+ winspeed=Uz2.transform_read(ultradis);
  Serial.print("averge is");Serial.println(winspeed);
  delay(1000);
 winspeed=WindZ.get_avergewind();
