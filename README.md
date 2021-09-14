@@ -162,19 +162,42 @@ Serial.print("\"Wind_frequencyofchange_x\": ");Serial.print("\"");Serial.print(W
  ```
 use allmiss to adapt cycle delay to measuerment errors as following //update cycle timing to avegere with 2 mintues , and gust of 30seconds 
   ```
-Serial.print("\"Wind_Speed_x\": ");Serial.print("\"");Serial.print(WindX.avgwind);Serial.print("\"");Serial.print(" , ");
+cycledelay=19000; // or as you preferred settings depending on power consumbtion 
+allmiss=(WindX._selfmiss+WindY._selfmiss+WindZ._selfmiss)*selfecho_timeout;  // adobt self cycle delay into main delay 
+allmiss+=(WindX._aheadmiss+WindY._aheadmiss+WindZ._aheadmiss)*headecho_timeout;
+allmiss+= _tempmiss;
+_tempmiss=0;
+cycledelay-=allmiss;
+delay(cycledelay);
 
  ```
  use the special_debug_functions.ino to diagnose the application with stepped unit tests.
   ```
-Serial.print("\"Wind_Speed_x\": ");Serial.print("\"");Serial.print(WindX.avgwind);Serial.print("\"");Serial.print(" , ");
-
+   if(dht.working) //doesn't update before 2 seconds
+   delay(10);
+ ultradis=Uz1.get_selfecho();
+ Serial.print("ultrasonic z1 is ");Serial.println(ultradis);
+ winspeed=Uz1.transform_read(ultradis);
+ Serial.print("ultrasonic z1 windspeed  "); Serial.println(winspeed);
+ ultradis=Uz2.get_selfecho();
+ Serial.print("ultrasonic z2 is ");Serial.println(ultradis);
+ winspeed=Uz2.transform_read(ultradis);
+ Serial.print("averge is");Serial.println(winspeed);
+ delay(1000);
+winspeed=WindZ.get_avergewind();
+Serial.print("averge wind is ");Serial.println(winspeed);
+wind_cycle(&WindX ,&WindY, &WindZ);
+allmiss=(WindX._selfmiss+WindY._selfmiss+WindZ._selfmiss)*selfecho_timeout;
+allmiss+=(WindX._aheadmiss+WindY._aheadmiss+WindZ._aheadmiss)*headecho_timeout;
+allmiss+= _tempmiss;
+//build the diagnostic or unit test accroding to your needs
  ```
 //code documentation end , timing , the cron job activates the script every 10 mintues , the script searches for arduino serial for 9 mintues while it takes the arduino 4:30 minutes to record new readings , the cycle limit is 30 seconds and the cron job will run each 2 mintues 
 Use grabserial to catch arduino serial every 2 mintues 
 script  doucmentation & usage 
   ```
-Serial.print("\"Wind_Speed_x\": ");Serial.print("\"");Serial.print(WindX.avgwind);Serial.print("\"");Serial.print(" , ");
+python3 /home/pi/grabserial/grabserial -d /dev/ttyACM0 -b 9600  -o /home/pi/serialtest.json  -e  31 -m "^{.*"
+curl -H "Content-Type: application/json" -X POST -d "@/home/pi/serialtest.json"  https://farmtopia.farmos.net/farm/sensor/listener/a7a5d8b103e51b03d17cdf70f584ebdf?private_key=6396c8023faf3501d945fea28098442b --verbose
 
  ```
 /
