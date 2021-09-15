@@ -189,10 +189,10 @@ allmiss+=(WindX._aheadmiss+WindY._aheadmiss+WindZ._aheadmiss)*headecho_timeout;
 allmiss+= _tempmiss;
 //build the diagnostic or unit test according to your needs
 ```
-###Timing 
-the cron job activates the script every 10 minutes , the script Use grabserial to catch arduino serial for 30 seconds and restarts the count when it catches the JSON packet bracket and quit when the close bracket is seen while it takes the arduino 10 seconds (100 sample average) to record new readings, the cycle limit can be adopted by reducing the sampling rate.
+### Timing 
+The cron job activates the script every 10 minutes , the script Use grabserial to catch arduino serial for 30 seconds and restarts the count when it catches the JSON packet bracket and quit when the close bracket is seen while it takes the arduino 10 seconds (100 sample average) to record new readings, the cycle limit can be adopted by reducing the sampling rate.
 script usage ( replace !public_key & !private_key with your sensor configuration
-  ```
+```
 python3 /home/pi/grabserial/grabserial -d /dev/ttyACM0 -b 9600  -o /home/pi/serialtest.json  -e  30 -m "^{.*" -q "}"
 curl -H "Content-Type: application/json" -X POST -d "@/home/pi/serialtest.json"  https://farmtopia.farmos.net/farm/sensor/listener/!public_key?private_key=!private_key --verbose
  ```
