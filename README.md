@@ -102,9 +102,10 @@ you can refer to Adafruit [DHT](https://github.com/adafruit/DHT-sensor-library) 
 ### Wind_auto.h/Wind_auto.cpp
 built on two classes,	JSNR04T which is an interface class that provides an instance of JSNR04T ultrasonic chip in **Auto mode** , with the needed functions to use the device as wind measurement tool by using the divergence in reading ultrasonic measurements with self-corrected sound speed calculated from air temperature & humidity.
 and wind class which preforms the mathematical logic on recorded data to output the needed weather details.
+
 Function Name | Input | Return | Description 
------------- | -------------| -------------| -------------
-JSNR04T(Constructor)|uint8_t EnPin, uint8_t RXpin, uint8_t type, uint16_t max_range)|void|Constructs a new object of type JSNR0RT that behaves as an instance of ultrasonic driver with EnPin for ground enable , RXpin for echo & type for operation type.
+------------- | ------| -------| -----------------
+JSNR04T(Constructor) | uint8_t EnPin, uint8_t RXpin, uint8_t type, uint16_t max_range) |void|Constructs a new object of type JSNR0RT that behaves as an instance of ultrasonic driver with EnPin for ground enable , RXpin for echo & type for operation type.
 JSNR04T.begin|void|void|Enables (triggers) the ultrasonic then identifies & start a new serial communication with it.
 JSNR04T.virtual_trigger|void|void|Set the ground pin for the ultrasonic to low so it starts it’s normal operation.
 JSNR04T.resetTimeout|uint8_t timeout|void|Change the millisecond timeout of the ultrasonic measuring to change the range.
