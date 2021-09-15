@@ -149,6 +149,7 @@ or just call Wind.update to update instantaneous speed of any dimension
  Windx.update();
 ```
  print the values to serial port as JSON.
+ 
  > "parameter":"value",
 
 ```
