@@ -149,14 +149,16 @@ or just call Wind.update to update instantaneous speed of any dimension
 ```
  print the values to serial port as JSON.
  > "parameter":"value",
- ```
+
+```
 Serial.print("\"Wind_Speed_x\": ");Serial.print("\"");Serial.print(WindX.avgwind);Serial.print("\"");Serial.print(" , ");
 Serial.print("\"Maximum_Speed_x\": ");Serial.print("\"");Serial.print(WindX.maxwind);Serial.print(" , ");
 Serial.print("\"Minmimum_Speed_x\": ");Serial.print("\"");Serial.print(WindX.minwind);Serial.print("\"");Serial.print(" , ");
 Serial.print("\"Wind_frequencyofchange_x\": ");Serial.print("\"");Serial.print(WindX.gust);Serial.print("\"");Serial.print(" , ");
 ```
-use allmiss to adapt cycle delay to measurement errors as following //update cycle timing to avegere with 2 minutes , and gust of 30 seconds 
- ```
+use allmiss to adapt cycle delay to measurement errors as following
+
+```
 cycledelay=19000; // or as you preferred settings depending on power consumption 
 allmiss=(WindX._selfmiss+WindY._selfmiss+WindZ._selfmiss)*selfecho_timeout;  // adobt self cycle delay into main delay 
 allmiss+=(WindX._aheadmiss+WindY._aheadmiss+WindZ._aheadmiss)*headecho_timeout;
@@ -165,7 +167,8 @@ _tempmiss=0;
 cycledelay-=allmiss;
 delay(cycledelay);
 ```
- use the special_debug_functions.ino to diagnose the application with stepped unit tests.
+use the special_debug_functions.ino to diagnose the application with stepped unit tests.
+
 ```
   if(dht.working) //doesn't update before 2 seconds
    delay(10);
