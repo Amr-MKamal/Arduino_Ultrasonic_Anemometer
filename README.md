@@ -138,7 +138,7 @@ DHT dht(DHTPIN, DHTTYPE);
 JSNR04T Ux1(45,10,mutual,2000) ,Ux2(37,13,mutual,2000),Uy1(47,50,mutual,2000),Uy2(31,10,mutual,2000) ,Uz1(41,12,mutual,2000),Uz2(39,11,mutual,2000);
 Wind WindX(&Ux1,&Ux2), WindY(&Uy1,&Uy2) ,WindZ(&Uz1,&Uz2);
 float CycTemp , CycHum , _CSS=340 , winspeed;
- ```
+```
 
 Call wind_cycle to update all values 
 
