@@ -195,7 +195,7 @@ script usage ( replace !public_key & !private_key with your sensor configuration
 ```
 python3 /home/pi/grabserial/grabserial -d /dev/ttyACM0 -b 9600  -o /home/pi/serialtest.json  -e  30 -m "^{.*" -q "}"
 curl -H "Content-Type: application/json" -X POST -d "@/home/pi/serialtest.json"  https://farmtopia.farmos.net/farm/sensor/listener/!public_key?private_key=!private_key --verbose
- ```
+```
 ## Farmtopia Disclaimer :
 This opensource project and all of it's components are the sole responsibility of it's developer, and although Farmtopia uses similar devices to build the commercial version of this weather station it doesn't necessarily use the same sourcecode or logic or hardware components nor it's responsible for the validity or the application of this opensource project . 
 ## License : [](https://github.com/Amr-MKamal/Arduino_Ultrasonic_Anenometer/blob/main/LICENSE) MIT License 
