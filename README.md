@@ -139,26 +139,24 @@ JSNR04T Ux1(45,10,mutual,2000) ,Ux2(37,13,mutual,2000),Uy1(47,50,mutual,2000),Uy
 Wind WindX(&Ux1,&Ux2), WindY(&Uy1,&Uy2) ,WindZ(&Uz1,&Uz2);
 float CycTemp , CycHum , _CSS=340 , winspeed;
 ```
-
 Call wind_cycle to update all values 
-
- ```
+```
  wind_cycle(&WindX ,&WindY, &WindZ);
- ```
- or just call Wind.update to update instantaneous speed of any dimension 
- ```
+```
+or just call Wind.update to update instantaneous speed of any dimension 
+```
  Windx.update();
- ```
+```
  print the values to serial port as JSON.
  > "parameter":"value",
-  ```
+ ```
 Serial.print("\"Wind_Speed_x\": ");Serial.print("\"");Serial.print(WindX.avgwind);Serial.print("\"");Serial.print(" , ");
 Serial.print("\"Maximum_Speed_x\": ");Serial.print("\"");Serial.print(WindX.maxwind);Serial.print(" , ");
 Serial.print("\"Minmimum_Speed_x\": ");Serial.print("\"");Serial.print(WindX.minwind);Serial.print("\"");Serial.print(" , ");
 Serial.print("\"Wind_frequencyofchange_x\": ");Serial.print("\"");Serial.print(WindX.gust);Serial.print("\"");Serial.print(" , ");
- ```
+```
 use allmiss to adapt cycle delay to measurement errors as following //update cycle timing to avegere with 2 minutes , and gust of 30 seconds 
-  ```
+ ```
 cycledelay=19000; // or as you preferred settings depending on power consumption 
 allmiss=(WindX._selfmiss+WindY._selfmiss+WindZ._selfmiss)*selfecho_timeout;  // adobt self cycle delay into main delay 
 allmiss+=(WindX._aheadmiss+WindY._aheadmiss+WindZ._aheadmiss)*headecho_timeout;
@@ -166,9 +164,9 @@ allmiss+= _tempmiss;
 _tempmiss=0;
 cycledelay-=allmiss;
 delay(cycledelay);
- ```
+```
  use the special_debug_functions.ino to diagnose the application with stepped unit tests.
-  ```
+```
   if(dht.working) //doesn't update before 2 seconds
    delay(10);
  ultradis=Uz1.get_selfecho();
@@ -187,7 +185,7 @@ allmiss=(WindX._selfmiss+WindY._selfmiss+WindZ._selfmiss)*selfecho_timeout;
 allmiss+=(WindX._aheadmiss+WindY._aheadmiss+WindZ._aheadmiss)*headecho_timeout;
 allmiss+= _tempmiss;
 //build the diagnostic or unit test according to your needs
- ```
+```
 ###Timing 
 the cron job activates the script every 10 minutes , the script Use grabserial to catch arduino serial for 30 seconds and restarts the count when it catches the JSON packet bracket and quit when the close bracket is seen while it takes the arduino 10 seconds (100 sample average) to record new readings, the cycle limit can be adopted by reducing the sampling rate.
 script usage ( replace !public_key & !private_key with your sensor configuration
