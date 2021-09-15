@@ -123,7 +123,9 @@ set_windsensor|DHT|void|passes the pointer of the DHT to wind class
 get_echofromahead|JSNR04T u1 ,JSNR04T u2|int|an indpedandt function to also read the echo of the facing sensor( for testing ).
 wind_cycle| Wind* WindX ,Wind* WindY ,Wind* WindZ|void|calculates and updates the windspeed and average (50 measurement average) wind speed of 3 wind objects representing the wind in 3D.
 ### Usage Examples :
+
 define the needed pin values & configuration , construct the cycle objects according to pin configuration & sensors type , identify cycle variables
+
 ```
 #define DHTPIN 53
 #define mutual 0
