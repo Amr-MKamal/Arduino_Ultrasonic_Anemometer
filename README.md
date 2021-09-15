@@ -198,7 +198,8 @@ curl -H "Content-Type: application/json" -X POST -d "@/home/pi/serialtest.json" 
 ```
 ## Farmtopia Disclaimer :
 This opensource project and all of it's components are the sole responsibility of it's developer, and although Farmtopia uses similar devices to build the commercial version of this weather station it doesn't necessarily use the same sourcecode or logic or hardware components nor it's responsible for the validity or the application of this opensource project . 
-## License : [](https://github.com/Amr-MKamal/Arduino_Ultrasonic_Anenometer/blob/main/LICENSE) MIT License 
+## License : 
+[MIT License](https://github.com/Amr-MKamal/Arduino_Ultrasonic_Anenometer/blob/main/LICENSE) 
 ## Planned upgrades :
 - [x] Project Pilot
 - [ ] Replace Arduino Mega with MKR1310
